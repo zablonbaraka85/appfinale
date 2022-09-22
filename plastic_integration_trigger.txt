@@ -1,0 +1,27 @@
+To use the webhook and get data from plastic-->
+
+1) The users going to do operations on plastic platform should have plastic installed and 
+   configured (Thats a must otherwise one can't use plastic scm)
+
+2) The endpoint for the webhook is "/webhook_plastic" if it is running locally it will be like 
+   http://127.0.0.1:8000/webhook_plastic (otherwise the url will change as per hosting but the endpoint
+   will be same)
+
+3) to run get different data from plastic one should configure the triggers
+    the basic command is-> cm trigger create after-mkrep CiNotifierWebTrigger "webtrigger http://127.0.0.1:8000/webhook_plastic" --server=g_p_s___main@cloud
+
+    now you can change the url as told on pt.2  and also the types of triggers acc to your need
+    (here, after-mkrep is the trigger)
+
+    https://www.plasticscm.com/documentation/triggers/plastic-scm-version-control-triggers-guide
+
+    ^ the above link shows all possible trigger and the usages
+
+Thats it!!
+
+Remember to do this on every machine using plastic scm
+
+Note: after every trigger is fired, the data will come to this django project
+      The webhook is set at core folder (check views.py and urls.py you will get webhook_plastic)
+      and do the following changes as per requirement
+
